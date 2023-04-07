@@ -30,6 +30,6 @@ class ParseController extends Controller
         // echo "<pre>";
         // print_r($data);
 
-        return view('charts');
+        return view('pages.dashboard');
     }
 }
