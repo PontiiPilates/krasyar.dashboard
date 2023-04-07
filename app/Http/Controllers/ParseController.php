@@ -27,7 +27,9 @@ class ParseController extends Controller
         // Закрытие файла
         fclose($open);
 
-        echo "<pre>";
-        print_r($data);
+        // echo "<pre>";
+        // print_r($data);
+
+        return view('charts');
     }
 }
