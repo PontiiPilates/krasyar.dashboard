@@ -1,24 +1,23 @@
 <script>
     anychart.onDocumentReady(function() {
-        // create pie chart with passed data
-        var chart = anychart.pie([
-            ['Apples', 6371664],
-            ['Pears', 789622],
-            ['Bananas', 7216301],
-            ['Grapes', 1486621],
-            ['Oranges', 1200000]
-        ]);
+
+        // set table content
+        var data = {{ Illuminate\Support\Js::from($circle) }};
+
+        var chart = anychart.pie(data);
 
         // set chart title text settings
-        chart.title('Fruits imported in 2015 (in kg)');
+        chart.title('Раота отдела в 2023 году');
+
         // set chart labels position to outside
         chart.labels().position('outside');
+
         // set legend title settings
         chart
             .legend()
             .title()
             .enabled(true)
-            .text('Retail channels')
+            .text('Показатели')
             .padding([0, 0, 10, 0]);
 
         // set legend position and items layout
@@ -30,6 +29,10 @@
 
         // set container id for the chart
         chart.container('circle');
+
+        // set palette to a chart:
+        chart.palette(anychart.palettes.{{ $theme }});
+
         // initiate chart drawing
         chart.draw();
     });
