@@ -5,69 +5,58 @@
 {{-- Grid --}}
 @section('content')
 
-    <div class="container-fluid" style="height: 100vh">
+    <div class="container-fluid" style="height: 100vh" id="dashboard">
 
         <div class="row h-100">
 
             {{-- --- --}}
             <div class="col-4">
-                <div class="row h-100 p-2">
-                    <div class="" id="table"></div>
+                <div class="row p-2" style="height: 7.5%;">
+                    <div id="valuesSet"></div>
+                </div>
+                <div class="row p-2" style="height: 92.5%;">
+                    <div id="table"></div>
                 </div>
             </div>
 
             {{-- --- --}}
             <div class="col-4">
                 <div class="row h-100 p-2">
-                    <div class="" id="leftAndRightHistogram"></div>
+                    <div id="stackedBar"></div>
                 </div>
             </div>
 
             {{-- --- --}}
             <div class="col-4">
 
-                <div class="row p-2" style="height: 40%;">
-                    <div class="" id="circle"></div>
+                <div class="row p-2" style="height: 50%;">
+                    <div id="pie"></div>
                 </div>
 
-                <div class="row p-2" style="height: 60%;">
-                    <div class="" id="simplehistogram"></div>
+                <div class="row p-2" style="height: 50%;">
+                    <div id="speed"></div>
                 </div>
 
             </div>
-
 
         </div>
 
     </div>
 
     <style>
-        /* #table {
-            background-color: brown;
+        #dashboard {
+            background-color: white;
         }
 
-        #simplehistogram {
-            background-color: antiquewhite;
-        }
-
-        #circle {
-            background-color: aqua;
-        }
-
-        #leftAndRightHistogram {
-            background-color: azure;
-        } */
-    </style>
-
-    <style>
         .anychart-credits {
             display: none;
         }
     </style>
 
-    @include('charts.leftAndRightHistogram')
-    @include('charts.circle')
-    @include('charts.simplehistogram')
+    @include('charts.stackedBar')
+    @include('charts.pie')
+    @include('charts.speed')
     @include('charts.table')
+    @include('charts.valuesSet')
 
 @endsection

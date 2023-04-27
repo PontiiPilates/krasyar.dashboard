@@ -1,8 +1,5 @@
 <script>
-    anychart.onDocumentReady(function() {
-
-        // create data set
-        var data = {{ Illuminate\Support\Js::from($simpleHistogram) }};
+    function chartCompilatorSpeed(data) {
 
         // sort data by alphabet order
         data.sort(function(itemFirst, itemSecond) {
@@ -35,6 +32,8 @@
 
         // добавление чередования наименований строк
         chart.xAxis().staggerMode(true);
+        chart.xAxis().staggerMaxLines(3);
+        chart.xAxis().labels().fontSize(10);
 
         // chart.yAxis().title('Revenue in Dollars');
 
@@ -45,12 +44,36 @@
         chart.yScale().minimum(0);
 
         // set container id for the chart
-        chart.container('simplehistogram');
-        
+        chart.container('speed');
+
         // set palette to a chart:
         chart.palette(anychart.palettes.{{ $theme }});
-        
+
         // initiate chart drawing
         chart.draw();
+
+    }
+
+    function getDataSpeed(url) {
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                chartCompilatorSpeed(data);
+            });
+    }
+
+    anychart.onDocumentReady(function() {
+
+        var url = '/speed';
+
+        getDataSpeed(url);
+
+        setInterval(() => {
+            document.getElementById("speed").innerHTML = '';
+            getDataSpeed(url);
+        }, 600000);
+
     });
 </script>

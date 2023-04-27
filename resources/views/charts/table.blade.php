@@ -1,18 +1,14 @@
 <script>
-    anychart.onDocumentReady(function() {
-
+    function chartCompileTable(data) {
         // set stage
         var stage = anychart.graphics.create("table");
 
         // create table
         var table = anychart.standalones.table();
 
-        // set table content
-        var data = {{ Illuminate\Support\Js::from($table) }};
-
         table.contents(data);
 
-        table.getRow(0).height(40).fontWeight(900).fontSize(12); // Set first row height 40px and bold the text
+        table.getRow(0).height(40).fontWeight(500).fontSize(10); // Set first row height 40px and bold the text
         table.getCol(0).width(90).fontWeight(900).fontSize(12); // Set first column width 70 px and bold the text
 
         // set colors for ever and odd rows
@@ -24,5 +20,28 @@
 
         // set table container and initiate draw
         table.container(stage).draw();
+
+    }
+
+    function getDataTable(url) {
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                chartCompileTable(data);
+            });
+    }
+
+    anychart.onDocumentReady(function() {
+
+        var url = '/table';
+
+        getDataTable(url);
+
+        setInterval(() => {
+            document.getElementById("table").innerHTML = '';
+            getDataTable(url);
+        }, 600000);
     });
 </script>

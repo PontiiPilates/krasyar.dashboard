@@ -28,18 +28,8 @@ class ParseController extends Controller
         return $data;
     }
 
-    public function convert()
+    public function index()
     {
-        $table = self::getDataFromCsv('Dashboard.csv');
-        $leftAndRightHistogram = self::getDataFromCsv('BarChartComplete.csv', false);
-        $circle = self::getDataFromCsv('PieChartComplete.csv', false);
-        $simpleHistogram = self::getDataFromCsv('BarChartSpeedComplete.csv', false);
-
-        // dump($table);
-        // dump($leftAndRightHistogram);
-        // dump($circle);
-        // dump($simpleHistogram);
-
         // $theme = 'earth';
         // $theme = 'monochrome';
         // $theme = 'provence';
@@ -51,16 +41,42 @@ class ParseController extends Controller
         $theme = 'glamour';
         // $theme = 'sea';
         // $theme = 'defaultPalette';
-        
+
         $table_odd = 'FFF0F5';
 
         return view('pages.dashboard', [
-            'table' => $table,
-            'leftAndRightHistogram' => $leftAndRightHistogram,
-            'circle' => $circle,
-            'simpleHistogram' => $simpleHistogram,
             'theme' => $theme,
             'table_odd' => $table_odd,
         ]);
+    }
+
+    public function pie()
+    {
+        $pie = self::getDataFromCsv('PieChartComplete.csv', false);
+        return response()->json($pie);
+    }
+
+    public function stackedBar()
+    {
+        $stackedBar = self::getDataFromCsv('BarChartComplete.csv', false);
+        return response()->json($stackedBar);
+    }
+
+    public function speed()
+    {
+        $speed = self::getDataFromCsv('BarChartSpeedComplete.csv', false);
+        return response()->json($speed);
+    }
+
+    public function table()
+    {
+        $table = self::getDataFromCsv('TableDashboard.csv');
+        return response()->json($table);
+    }
+
+    public function valuesSet()
+    {
+        $valuesSet = self::getDataFromCsv('NoEmployee.csv', false);
+        return response()->json($valuesSet);
     }
 }

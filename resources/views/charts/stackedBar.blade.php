@@ -1,14 +1,20 @@
 <script>
-    anychart.onDocumentReady(function() {
+    function chartCompileStackedBar(data) {
 
         // create data set
-        var dataSet = anychart.data.set(getData());
+        var dataSet = anychart.data.set(data);
 
         // map data for the first series, take x from the zero column and value from the first column of data set
-        var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+        var firstSeriesData = dataSet.mapAs({
+            x: 0,
+            value: 1
+        });
 
         // map data for the second series, take x from the zero column and value from the second column of data set
-        var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+        var secondSeriesData = dataSet.mapAs({
+            x: 0,
+            value: 2
+        });
 
         // create bar chart
         var chart = anychart.bar();
@@ -37,11 +43,11 @@
         chart.xAxis(0).overlapMode('allow-overlap');
 
         // turn on extra axis for the symmetry (right data)
-        chart
-            .xAxis(1)
-            .enabled(true)
-            .orientation('right')
-            .overlapMode('allow-overlap');
+        // chart
+        //     .xAxis(1)
+        //     .enabled(true)
+        //     .orientation('right')
+        //     .overlapMode('allow-overlap');
 
         // set chart title text
         chart.title('Структура распределения задач');
@@ -79,12 +85,12 @@
         // create first series with mapped data
         series = chart.bar(firstSeriesData);
         series.name('Выполнено');
-        series.tooltip().position('right').anchor('left-center');
+        // series.tooltip().position('right').anchor('left-center');
 
         // create second series with mapped data
         series = chart.bar(secondSeriesData);
         series.name('В работе');
-        series.tooltip().position('left').anchor('right-center');
+        // series.tooltip().position('left').anchor('left-center');
 
         // turn on legend
         chart
@@ -95,19 +101,35 @@
             .padding([0, 0, 20, 0]);
 
         // set container id for the chart
-        chart.container('leftAndRightHistogram');
+        chart.container('stackedBar');
 
         // set palette to a chart:
         chart.palette(anychart.palettes.{{ $theme }});
 
         // initiate chart drawing
         chart.draw();
-    });
-
-    // set table content
-    data = {{ Illuminate\Support\Js::from($leftAndRightHistogram) }};
-
-    function getData() {
-        return data;
     }
+
+    function getDataStackedBar(url) {
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                chartCompileStackedBar(data);
+            });
+    }
+
+    anychart.onDocumentReady(function() {
+
+        var url = '/stackedbar';
+
+        getDataStackedBar(url);
+
+        setInterval(() => {
+            document.getElementById("stackedBar").innerHTML = '';
+            getDataStackedBar(url);
+        }, 600000);
+
+    });
 </script>
