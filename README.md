@@ -1,3 +1,5 @@
+<p align="center"><img src="https://repository-images.githubusercontent.com/621149005/6ed0fe82-16a6-4cb6-ae99-04694ba46713" width="400"></a></p>
+
 ## Задание
 
 - Разработать дисплей с графическим представлением показателей работы одного из отделов компании.
