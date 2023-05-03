@@ -35,13 +35,13 @@
 
     anychart.onDocumentReady(function() {
 
-        var url = '/table';
+        var url = '/api/table';
 
         getDataTable(url);
 
         setInterval(() => {
             document.getElementById("table").innerHTML = '';
             getDataTable(url);
-        }, 600000);
+        }, {{ $time_reload_page }});
     });
 </script>

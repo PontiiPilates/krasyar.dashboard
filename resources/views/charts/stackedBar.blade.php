@@ -122,14 +122,14 @@
 
     anychart.onDocumentReady(function() {
 
-        var url = '/stackedbar';
+        var url = '/api/stackedbar';
 
         getDataStackedBar(url);
 
         setInterval(() => {
             document.getElementById("stackedBar").innerHTML = '';
             getDataStackedBar(url);
-        }, 600000);
+        }, {{ $time_reload_page }});
 
     });
 </script>

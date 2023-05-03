@@ -11,7 +11,7 @@
 
     @yield('content')
 
-    @include('components.scripts')
+    @include('components.foot')
 
 </body>
 

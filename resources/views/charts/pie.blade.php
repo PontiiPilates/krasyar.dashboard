@@ -49,13 +49,13 @@
 
     anychart.onDocumentReady(function() {
 
-        var url = '/pie';
+        var url = '/api/pie';
 
         getDataPie(url);
 
         setInterval(() => {
             document.getElementById("pie").innerHTML = '';
             getDataPie(url);
-        }, 600000);
+        }, {{ $time_reload_page }});
     });
 </script>

@@ -13,10 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\ParseController::class, 'index']);
-
-Route::get('/pie', [App\Http\Controllers\ParseController::class, 'pie']);
-Route::get('/stackedbar', [App\Http\Controllers\ParseController::class, 'stackedBar']);
-Route::get('/speed', [App\Http\Controllers\ParseController::class, 'speed']);
-Route::get('/table', [App\Http\Controllers\ParseController::class, 'table']);
-Route::get('/valuesset', [App\Http\Controllers\ParseController::class, 'valuesSet']);
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);

@@ -49,13 +49,13 @@
 
     anychart.onDocumentReady(function() {
 
-        var url = '/valuesset';
+        var url = '/api/valuesset';
 
         getDataValueesSet(url);
 
         setInterval(() => {
             document.getElementById("valuesSet").innerHTML = '';
             getDataValueesSet(url);
-        }, 600000);
+        }, {{ $time_reload_page }});
     });
 </script>

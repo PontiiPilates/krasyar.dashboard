@@ -66,14 +66,14 @@
 
     anychart.onDocumentReady(function() {
 
-        var url = '/speed';
+        var url = '/api/speed';
 
         getDataSpeed(url);
 
         setInterval(() => {
             document.getElementById("speed").innerHTML = '';
             getDataSpeed(url);
-        }, 600000);
+        }, {{ $time_reload_page }});
 
     });
 </script>

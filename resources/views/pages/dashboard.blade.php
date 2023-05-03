@@ -59,4 +59,6 @@
     @include('charts.table')
     @include('charts.valuesSet')
 
+    @include('scripts.fullscreen')
+
 @endsection
