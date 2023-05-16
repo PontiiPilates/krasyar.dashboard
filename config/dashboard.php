@@ -24,17 +24,17 @@ return [
     |   - earth
     |   - monochrome
     |   - provence
-    |   - morning
+    |   - morning +
     |   - coffee
-    |   - wines
+    |   - wines +
     |   - pastel
     |   - blue
     |   - glamour
     |   - sea
-    |   - defaultPalette
+    |   - defaultPalette +
     */
 
-    'theme' => 'glamour',
+    'theme' => 'wines',
 
     /*
     |--------------------------------------------------------------------------
@@ -43,12 +43,14 @@ return [
     | 
     | Доступные значения:
     |   - glamour - FFF0F5
+    |   - morning - 8AC4E3
+    |   - wines - AA9F4D, F5BD64
     | 
     | Для других палитр нужно подбирать опытным путём.
     | 
     */
 
-    'table_odd' => 'FFF0F5',
+    'table_odd' => 'F5BD64',
 
     /*
     |--------------------------------------------------------------------------

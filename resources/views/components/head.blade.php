@@ -11,3 +11,5 @@
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
 
 <title>@yield('title')</title>
+
+<link rel="icon" href="/favicon.svg">
