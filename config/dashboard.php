@@ -13,7 +13,8 @@ return [
     | 
     */
 
-    'source' => '//k5/Public/1/dashboard/',
+    'source_it' => '//k5/Public/1/dashboard/',
+    'source_tpod' => '//k5/Public/1/dashboard_tpod/',
 
     /*
     |--------------------------------------------------------------------------

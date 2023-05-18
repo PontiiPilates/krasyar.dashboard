@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
+
+Route::get('/tpod', [App\Http\Controllers\DashboardController::class, 'tpod']);

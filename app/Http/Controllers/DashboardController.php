@@ -28,4 +28,14 @@ class DashboardController extends Controller
             'time_reload_page' => $this->time_reload_page,
         ]);
     }
+
+    public function tpod()
+    {
+        return view('pages.tpod', [
+            'theme' => $this->theme,
+            'table_odd' => $this->table_odd,
+            'fullscreen_key' => $this->fullscreen_key,
+            'time_reload_page' => $this->time_reload_page,
+        ]);
+    }
 }

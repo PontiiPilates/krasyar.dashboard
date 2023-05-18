@@ -9,19 +9,19 @@ use App\Interfaces\DataProvider;
  */
 class NetDisk implements DataProvider
 {
-    // источник данных
-    public $source;
-
-    public function __construct()
+    public function dataTransform($department, $file_name, $with_header = true)
     {
-        // определение источника данных
-        $this->source = config('dashboard.source');
-    }
+        // данные для ит отдела
+        if ($department == 'it') {
+            $source = config('dashboard.source_it');
+        }
+        // данные для техподдержки
+        if ($department == 'tpod') {
+            $source = config('dashboard.source_tpod');
+        }
 
-    public function dataTransform($file_name, $with_header = true)
-    {
         // открытие файла
-        $open = fopen($this->source . $file_name, "r");
+        $open = fopen($source . $file_name, "r");
 
         // сборка требуемой структуры данных
         while ($string = fgetcsv($open, ',')) {

@@ -20,8 +20,16 @@ use App\Http\Controllers\GetDataApiController;
 //     return $request->user();
 // });
 
+// для ит отдела
 Route::get('/pie', [GetDataApiController::class, 'pie']);
 Route::get('/stackedbar', [GetDataApiController::class, 'stackedBar']);
 Route::get('/speed', [GetDataApiController::class, 'speed']);
 Route::get('/table', [GetDataApiController::class, 'table']);
 Route::get('/valuesset', [GetDataApiController::class, 'valuesSet']);
+
+// для техподдержки
+Route::get('/pie_tpod', [GetDataApiController::class, 'pieTPod']);
+Route::get('/stackedbar_tpod', [GetDataApiController::class, 'stackedBarTPod']);
+Route::get('/speed_tpod', [GetDataApiController::class, 'speedTPod']);
+Route::get('/table_tpod', [GetDataApiController::class, 'tableTPod']);
+Route::get('/valuesset_tpod', [GetDataApiController::class, 'valuesSetTPod']);
