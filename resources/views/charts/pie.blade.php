@@ -5,7 +5,7 @@
         var chart = anychart.pie(data);
 
         // set chart title text settings
-        chart.title('Работа отдела в 2023 году');
+        chart.title('Работа в текущем квартале');
 
         // set chart labels position to outside
         chart.labels().position('outside');

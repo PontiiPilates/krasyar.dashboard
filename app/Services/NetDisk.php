@@ -9,17 +9,8 @@ use App\Interfaces\DataProvider;
  */
 class NetDisk implements DataProvider
 {
-    public function dataTransform($department, $file_name, $with_header = true)
+    public function dataTransform($source, $file_name, $with_header = true)
     {
-        // данные для ит отдела
-        if ($department == 'it') {
-            $source = config('dashboard.source_it');
-        }
-        // данные для техподдержки
-        if ($department == 'tpod') {
-            $source = config('dashboard.source_tpod');
-        }
-
         // открытие файла
         $open = fopen($source . $file_name, "r");
 
